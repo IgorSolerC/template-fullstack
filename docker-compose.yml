@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: angular_prod_container
+    ports:
+      # Map the Nginx port to the host
+      - "80:80"
+    restart: unless-stopped
+
+volumes:
+  mysql_data:
+

@@ -1,0 +1,15 @@
+# Ignore node_modules, as they will be installed inside the container
+node_modules
+
+# Ignore local build artifacts
+dist
+.angular
+
+# Ignore Docker files
+Dockerfile
+.dockerignore
+
+# Ignore Git files and other common unnecessary files
+.git
+.gitignore
+README.md
