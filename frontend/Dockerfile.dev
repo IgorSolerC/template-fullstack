@@ -1,0 +1,20 @@
+# Use a Node.js image
+FROM node:20-alpine
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy package.json and package-lock.json to leverage Docker cache
+# This ensures 'npm install' is only re-run when these files change.
+COPY package*.json ./
+RUN npm install
+
+# Note: We do NOT copy the rest of the source code here,
+# because we will mount it using a volume in docker-compose.
+
+# Expose the default Angular port
+EXPOSE 4200
+
+# The command to start the Angular development server
+# --host 0.0.0.0 is crucial to make the server accessible from outside the container
+#CMD ["npx", "ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
