@@ -1,11 +1,41 @@
 version: '3.8'
 
 services:
+  db:
+    image: mysql:8.0
+    container_name: database_mysql
+    restart: always
+    env_file:
+      - ./backend/.env
+    ports:
+      # Expose MySQL port to the host machine for debugging/database clients
+      - "3306:3306"
+    volumes:
+      # Persist database data
+      - mysql_data:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend_app
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      # Mount the backend code for live reloading
+      - ./backend:/app
+    env_file:
+      - ./backend/.env
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    depends_on:
+      - db
+
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: angular_prod_container
+    container_name: angular_frontend
     ports:
       # Map the Nginx port to the host
       - "80:80"

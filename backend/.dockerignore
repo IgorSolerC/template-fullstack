@@ -1,0 +1,30 @@
+# Git specific
+.git
+.gitignore
+
+# Docker specific
+.dockerignore
+Dockerfile
+docker-compose.yml
+
+# Environment files
+.env
+*.env
+
+# Python specific cache and virtual environment
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# IDE and OS specific files
+.vscode/
+.idea/
+*.DS_Store
+
+# Documentation
+README.md
+
+# Test artifacts
+backend/.pytest_cache/
+backend/htmlcov/

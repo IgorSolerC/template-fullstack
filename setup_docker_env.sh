@@ -21,9 +21,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY ./backend/ /app/
 EOF
 
-# backend/.env
+# .env
 # Note: This file contains sensitive data and should be added to .gitignore
-cat << 'EOF' > backend/.env
+cat << 'EOF' > .env
 # MySQL Settings
 MYSQL_DATABASE=fastapi_db
 MYSQL_USER=fastapi_user
