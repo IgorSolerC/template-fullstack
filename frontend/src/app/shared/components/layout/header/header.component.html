@@ -12,9 +12,7 @@
     <div class="header-actions">
       <!-- THEME TOGGLE BUTTON -->
       <button class="theme-toggle" (click)="themeService.toggleTheme()" [attr.aria-label]="'Switch to ' + (themeService.theme() === 'light' ? 'dark' : 'light') + ' mode'">
-        <!-- Sun Icon (for Dark Mode) -->
         <i *ngIf="themeService.theme() === 'dark'" class="fa-solid fa-lightbulb"></i>
-        <!-- Moon Icon (for Light Mode) -->
         <i *ngIf="themeService.theme() === 'light'" class="fa-solid fa-moon"></i>
       </button>
 

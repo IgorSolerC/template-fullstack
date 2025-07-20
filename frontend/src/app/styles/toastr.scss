@@ -19,6 +19,9 @@
   color: var(--success-text) !important;
   .toast-close-button {
     color: var(--success-text);
+    * {
+      color: var(--success-text);
+    }
     &:hover {
       color: var(--success-text);
     }
@@ -29,6 +32,9 @@
   color: var(--error-text) !important;
   .toast-close-button {
     color: var(--error-text);
+    * {
+      color: var(--error-text);
+    }
     &:hover {
       color: var(--error-text);
     }
@@ -39,6 +45,9 @@
   color: var(--info-text) !important;
   .toast-close-button {
     color: var(--info-text);
+    * {
+      color: var(--info-text);
+    }
     &:hover {
       color: var(--info-text);
     }
@@ -49,6 +58,9 @@
   color: var(--warning-text) !important;
   .toast-close-button {
     color: var(--warning-text);
+    * {
+      color: var(--warning-text);
+    }
     &:hover {
       color: var(--warning-text);
     }

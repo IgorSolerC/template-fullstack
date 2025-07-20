@@ -9,9 +9,9 @@ export const routes: Routes = [
         path: '', component: LayoutComponent,
         children: [
             { path: '', redirectTo: '/home', pathMatch: 'full'},
-            { path: 'home', component: HomeComponent, title: 'Home'},
-            { path: 'example', component: ExampleComponent, title: 'Example' },
+            { path: 'home', component: HomeComponent, title: 'Início'},
+            { path: 'example', component: ExampleComponent, title: 'Exemplo' },
+            { path: '**', component: PageNotFoundComponent, title: 'Página Não Encontrada' }
         ]
     },
-    { path: '**', component: PageNotFoundComponent }
 ];  

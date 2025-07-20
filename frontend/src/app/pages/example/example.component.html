@@ -6,13 +6,13 @@
     <form [formGroup]="newExampleForm" (ngSubmit)="onSubmit()">
       <div class="form-field">
         <label for="name">Nome:</label>
-        <input id="name" type="text" formControlName="name" placeholder="Nome Exemplo">
+        <input class="input" id="name" type="text" formControlName="name" placeholder="Nome Exemplo">
       </div>
       <div class="form-field">
         <label for="description">Descrição:</label>
-        <input id="description" type="text" formControlName="description" placeholder="Uma descrição curta">
+        <input class="input" id="description" type="text" formControlName="description" placeholder="Uma descrição curta">
       </div>
-      <button type="submit" [disabled]="newExampleForm.invalid">Criar</button>
+      <button class="btn" type="submit" [disabled]="newExampleForm.invalid">Criar</button>
     </form>
   </section>
 
@@ -29,11 +29,11 @@
         <ul *ngIf="state.data && state.data.length > 0; else noExamples" class="example-list">
           <li>
             <span>0: Exemplo Erro</span>
-            <button (click)="viewExample(-1)">Detalhes</button>
+            <button class="btn" (click)="viewExample(-1)">Detalhes</button>
           </li>
           <li *ngFor="let ex of state.data">
             <span>{{ ex.id }}: {{ ex.name }}</span>
-            <button (click)="viewExample(ex.id)">Detalhes</button>
+            <button class="btn" (click)="viewExample(ex.id)">Detalhes</button>
           </li>
         </ul>
       </ng-template>
@@ -54,7 +54,7 @@
       <p><strong>ID:</strong> {{ selectedExample.id }}</p>
       <p><strong>Nome:</strong> {{ selectedExample.name }}</p>
       <p><strong>Descrição:</strong> {{ selectedExample.description }}</p>
-      <button (click)="clearSelection()">Fechar</button>
+      <button class="btn neutral" (click)="clearSelection()">Fechar</button>
     </div>
   </section>
 

@@ -1,48 +1,83 @@
-// This file defines the color palette for the entire application.
 
+
+/* TEMA CLARO */
 :root {
-  // -- Light Theme Variables --
-  --background-primary-raw: 255, 255, 255;
+  --background-primary-raw: 255, 255, 255; // RGB values
   --background-primary: rgb(var(--background-primary-raw));      // Main background
   
   --background-secondary: #f8f9fa;    // Cards, headers, etc.
   --foreground-primary: #212529;      // Main text color
   --foreground-secondary: #6c757d;    // Muted text
-  --accent-primary: #007bff;          // Main brand color for links, buttons
-  --accent-primary-hover: #0056b3;    // Hover state for brand color
   --border-color: #dee2e6;
-  --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
   --warning-primary: #ffc107;
-  --error-primary: #dc3545;
-  --success-primary: #28a745;
-  --info-primary:#007bff;
   --warning-text: #f8f9fa;
+  --error-primary: #dc3545;
   --error-text: #f8f9fa;
+  --success-primary: #28a745;
   --success-text: #f8f9fa;
+  --info-primary:#007bff;
   --info-text: #f8f9fa;
+
+  --accent-primary: #007bff;            // Main brand color for links, buttons
+  --accent-primary-hover: #0056b3;      // Hover state for brand color
+
+  --accent-btn: var(--accent-primary);           // Main brand color for links, buttons
+  --accent-btn-hover: var(--accent-primary-hover);     // Hover state for brand color
+  --accent-btn-text: #ffffff;       // Text color for brand buttons
+  --neutral-btn: var(--border-color); // Neutral color for buttons
+  --neutral-btn-hover: #c7cdd3;     // Hover state for neutral color
+  --neutral-btn-text: #212529;      // Text color for neutral buttons
+  --critical-btn: var(--error-primary);// Critical color for buttons, like deletes
+  --critical-btn-hover: #d41d39;     // Hover state for critical color
+  --critical-btn-text: #ffffff;      // Text color for critical buttons
+
+  --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --heavy-shadow: 0 10px 18px rgba(0, 0, 0, 0.09);
+  --medium-shadow: 0 7px 13px rgba(0, 0, 0, 0.08);
+  --light-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  --disabled-button-bg: var(--border-color);
 
 }
 
+/* TEMA ESCURO */
 body.dark-mode {
-  // -- Dark Theme Overrides --
-  --background-primary-raw: 18, 18, 18;
+  --background-primary-raw: 18, 18, 18;  // RGB values
   --background-primary: rgb(var(--background-primary-raw)); // Main background
 
   --background-secondary: #1e1e1e;     // Cards, headers, etc.  
   --foreground-primary: #e9ecef;       // Main text color     
   --foreground-secondary: #adb5bd;     // Muted text        
-  --accent-primary: #3195e6;           // Main brand color for links, buttons    
-  --accent-primary-hover: #1c7ed6;     // Hover state for brand color            
   --border-color: #343a40;
+
+  --accent-primary: #3195e6;           // Main brand color for links, buttons    
+  --accent-primary-hover: #1c7ed6;     // Hover state for brand color       
+
+  --accent-btn: var(--accent-primary);           // Main brand color for links, buttons
+  --accent-btn-hover: var(--accent-primary-hover);     // Hover state for brand color
+  --accent-btn-text: #e9ecef;       // Text color for brand buttons
+  --neutral-btn: var(--border-color); // Neutral color for buttons
+  --neutral-btn-hover: #292f35;     // Hover state for neutral color
+  --neutral-btn-text: #e9ecef;      // Text color for neutral buttons
+  --critical-btn: var(--error-primary);// Critical color for buttons, like deletes
+  --critical-btn-hover: #c60e3c;     // Hover state for critical color
+  --critical-btn-text: #ffffff;      // Text color for critical buttons
+  
   --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --heavy-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --medium-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --light-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 
   --warning-primary: #ffc107;
-  --error-primary: #dc3545;
-  --success-primary: #28a745;
-  --info-primary:#007bff;
   --warning-text: #f8f9fa;
+  --error-primary: #d41d39;
   --error-text: #f8f9fa;
+  --success-primary: #28a745;
   --success-text: #f8f9fa;
+  --info-primary:#007bff;
   --info-text: #f8f9fa;
+
+  --disabled-button-bg: var(--border-color);
+  --disabled-button-text: var(--border-color);
 }

@@ -11,23 +11,6 @@
   padding: 1rem;
 }
 
-.card {
-  background-color: var(--background-secondary);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--header-shadow); // Re-using the header shadow for consistency
-  
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-}
-
-h2 {
-  margin-top: 0;
-  color: var(--foreground-primary);
-  border-bottom: 1px solid var(--border-color);
-  
-  padding-bottom: 0.5rem;
-}
-
 form {
   display: flex;
   flex-direction: column;
@@ -45,43 +28,8 @@ form {
     font-weight: bold;
     font-size: var(--font-size-default);
   }
-
-  input {
-    padding: 0.5rem;
-
-    background-color: var(--background-primary);
-    border: 1px solid var(--border-color);
-    color: var(--foreground-primary);
-
-    border-radius: 4px;
-
-    &::placeholder {
-      color: var(--foreground-secondary);
-    }
-  }
 }
 
-// A generic button style that will be used across the app
-button {
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 500;
-  
-  background-color: var(--accent-primary);
-  color: white;
-
-  &:hover {
-    background-color: var(--accent-primary-hover);
-  }
-
-  &:disabled {
-    background-color: var(--border-color);
-    color: var(--foreground-secondary);
-    cursor: not-allowed;
-  }
-}
 
 .example-list {
   list-style: none;
@@ -114,13 +62,6 @@ button {
   // Target the "Close" button specifically
   button {
     margin-top: 1rem;
-    
-    // Use secondary colors to de-emphasize this button
-    background-color: var(--foreground-secondary);
-    
-    &:hover {
-      opacity: 0.8;
-    }
   }
 }
 
