@@ -38,6 +38,7 @@
   --light-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 
   --disabled-button-bg: var(--border-color);
+  --disabled-button-text: var(--foreground-secondary);
 
 }
 
@@ -79,5 +80,5 @@ body.dark-mode {
   --info-text: #f8f9fa;
 
   --disabled-button-bg: var(--border-color);
-  --disabled-button-text: var(--border-color);
+  --disabled-button-text: var(--foreground-secondary);
 }
