@@ -19,17 +19,24 @@
   <!-- Section 2: View All Examples -->
   <section class="card">
     <h2>Todos os exemplos</h2>
-    <ng-container *ngIf="examples$ | async as examples; else loading">
-      <ul *ngIf="examples.length > 0; else noExamples" class="example-list">
-        <li>
-          <span>0: Exemplo Erro</span>
-          <button (click)="viewExample(-1)">Detalhes</button>
-        </li>
-        <li *ngFor="let ex of examples">
-          <span>{{ ex.id }}: {{ ex.name }}</span>
-          <button (click)="viewExample(ex.id)">Detalhes</button>
-        </li>
-      </ul>
+    <ng-container *ngIf="examples$ | async as state; else loading">
+      <div *ngIf="state.error; else showExamples" class="error-message">
+        <p>Ocorreu um erro ao carregar os exemplos. Por favor, tente novamente mais tarde.</p>
+        <!-- Optional: You could show the error details during development -->
+        <!-- <pre>{{ state.error | json }}</pre> -->
+      </div>
+      <ng-template #showExamples>
+        <ul *ngIf="state.data && state.data.length > 0; else noExamples" class="example-list">
+          <li>
+            <span>0: Exemplo Erro</span>
+            <button (click)="viewExample(-1)">Detalhes</button>
+          </li>
+          <li *ngFor="let ex of state.data">
+            <span>{{ ex.id }}: {{ ex.name }}</span>
+            <button (click)="viewExample(ex.id)">Detalhes</button>
+          </li>
+        </ul>
+      </ng-template>
     </ng-container>
 
     <ng-template #loading>

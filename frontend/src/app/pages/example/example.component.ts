@@ -1,11 +1,15 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Observable, Subscription, toArray } from 'rxjs';
+import { catchError, map, Observable, of, Subscription, toArray } from 'rxjs';
 import { ExampleService } from '../../core/services/example.service';
 import { Example } from '../../domain/models/example';
 import { ToastrService } from 'ngx-toastr';
 
+interface ExamplesState {
+  data?: Example[];
+  error?: any; 
+}
 
 @Component({
   selector: 'app-example',
@@ -23,7 +27,7 @@ export class ExampleComponent implements OnInit, OnDestroy {
   private toastr = inject(ToastrService);
 
   // Observable to hold the list of examples
-  examples$!: Observable<Example[]>;
+  examples$!: Observable<ExamplesState>;
   getExampleByIdSubscription: Subscription | null = null;
 
   // To hold the details of a single fetched example
@@ -44,7 +48,13 @@ export class ExampleComponent implements OnInit, OnDestroy {
   }
 
   loadExamples(): void {
-    this.examples$ = this.exampleService.getExamples();
+
+    this.examples$ = this.exampleService.getExamples().pipe(
+      // On success, map the array to the 'data' property of our state object
+      map(examples => ({ data: examples })),
+      // On error, catch it and return an observable of the state object with the 'error' property set
+      catchError(error => of({ error: error }))
+    );
   }
   
   viewExample(id: number): void {
@@ -55,7 +65,7 @@ export class ExampleComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         console.error('Error fetching example:', err);
-        this.toastr.error('Falha ao carregar o exemplo. Por favor, tente novamente. ' + (err.error.detail || err.message), 'Error');
+        this.toastr.error((err.error.detail || err.message), 'Erro ao carregar dados');
       }
     });
   }
@@ -80,7 +90,7 @@ export class ExampleComponent implements OnInit, OnDestroy {
       },
       error: (err) => {
         console.error('Error creating example:', err);
-        this.toastr.error('Falha ao cadastrar exemplo.', 'Erro');
+        this.toastr.error((err.error.detail || err.message), 'Falha ao cadastrar exemplo');
       }
     });
   }
