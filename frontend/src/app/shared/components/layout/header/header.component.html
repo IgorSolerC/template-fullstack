@@ -1,0 +1,27 @@
+<header class="app-header">
+  <div class="header-container">
+    <a class="logo" routerLink="/" (click)="closeMenu()">MyApp</a>
+
+    <nav class="nav-links" [class.is-open]="isMenuOpen">
+      <ul>
+        <li><a routerLink="/home" routerLinkActive="active-link" (click)="closeMenu()">Home</a></li>
+        <li><a routerLink="/example" routerLinkActive="active-link" (click)="closeMenu()">Example</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <!-- THEME TOGGLE BUTTON -->
+      <button class="theme-toggle" (click)="themeService.toggleTheme()" [attr.aria-label]="'Switch to ' + (themeService.theme() === 'light' ? 'dark' : 'light') + ' mode'">
+        <!-- Sun Icon (for Dark Mode) -->
+        <svg *ngIf="themeService.theme() === 'dark'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.106a.75.75 0 010 1.06l-1.591 1.59a.75.75 0 11-1.06-1.06l1.59-1.59a.75.75 0 011.061 0zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5h2.25a.75.75 0 01.75.75zM17.894 17.894a.75.75 0 011.06 0l1.59 1.59a.75.75 0 11-1.06 1.06l-1.59-1.59a.75.75 0 010-1.06zM12 21a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 21zM5.106 17.894a.75.75 0 010-1.06l1.59-1.59a.75.75 0 111.061 1.06l-1.59 1.59a.75.75 0 01-1.06 0zM3 12a.75.75 0 01-.75.75H.75a.75.75 0 010-1.5h2.25A.75.75 0 013 12zM6.106 6.106a.75.75 0 011.06 0l1.59 1.59a.75.75 0 01-1.06 1.06L6.106 7.167a.75.75 0 010-1.06z"/></svg>
+        <!-- Moon Icon (for Light Mode) -->
+        <svg *ngIf="themeService.theme() === 'light'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 004.463-.949a.75.75 0 01.82.162a10.5 10.5 0 11-15.65-15.65a.75.75 0 01.21.033zM10.743 3.018a9 9 0 1010.237 10.237A8.973 8.973 0 0112 15a8.973 8.973 0 01-4.257-1.125a.75.75 0 01.033-.948a7.454 7.454 0 00.91-1.298a.75.75 0 011.06-.217a6.01 6.01 0 012.332.228a.75.75 0 01.37.91a7.454 7.454 0 00-.91 1.298.75.75 0 01-.217 1.06a6.01 6.01 0 01-2.332-.228.75.75 0 01-.948.033A8.973 8.973 0 013.018 10.743z" clip-rule="evenodd" /></svg>
+      </button>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="menu-toggle" (click)="toggleMenu()" [class.is-open]="isMenuOpen" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>

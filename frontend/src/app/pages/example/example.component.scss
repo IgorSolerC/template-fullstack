@@ -1,0 +1,148 @@
+:host {
+  display: block;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.card {
+  // Use theme variables for background, border, and shadow
+  background-color: var(--background-secondary);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--header-shadow); // Re-using the header shadow for consistency
+  
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  // transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+h2 {
+  margin-top: 0;
+  // Use theme variables for the text and border colors
+  color: var(--foreground-primary);
+  border-bottom: 1px solid var(--border-color);
+  
+  padding-bottom: 0.5rem;
+  // transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+
+  label {
+    // Muted text for labels
+    color: var(--foreground-secondary);
+    font-weight: bold;
+    font-size: 0.9em;
+    // transition: color 0.2s ease-in-out;
+  }
+
+  input {
+    padding: 0.5rem;
+    // Use theme variables for the input fields
+    background-color: var(--background-primary);
+    border: 1px solid var(--border-color);
+    color: var(--foreground-primary);
+
+    border-radius: 4px;
+    // transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+
+    &::placeholder {
+      color: var(--foreground-secondary);
+    }
+  }
+}
+
+// A generic button style that will be used across the app
+button {
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  
+  // Use the primary accent color for the main action button
+  background-color: var(--accent-primary);
+  color: white; // White text usually works well on strong accent colors
+  // transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: var(--accent-primary-hover);
+  }
+
+  &:disabled {
+    // A more theme-friendly disabled state
+    background-color: var(--border-color);
+    color: var(--foreground-secondary);
+    cursor: not-allowed;
+  }
+}
+
+.example-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    
+    // Use theme variable for the list item separator
+    border-bottom: 1px solid var(--border-color);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    // Target the button inside list items specifically if needed
+    button {
+      // You could make these secondary buttons if you wanted
+      // background-color: var(--background-secondary);
+      // color: var(--foreground-primary);
+      // border: 1px solid var(--border-color);
+    }
+  }
+}
+
+.details {
+  p {
+    margin: 0.5rem 0;
+    strong {
+      color: var(--foreground-primary);
+    }
+  }
+  
+  // Target the "Close" button specifically
+  button {
+    margin-top: 1rem;
+    
+    // Use secondary colors to de-emphasize this button
+    background-color: var(--foreground-secondary);
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+// Loading/empty state text styling
+.loading, .noExamples {
+  color: var(--foreground-secondary);
+  font-style: italic;
+}

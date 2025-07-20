@@ -29,4 +29,4 @@ services:
       - ./frontend:/app
       # Prevent host's node_modules from overwriting the container's
       - /app/node_modules
-    command: npx ng serve --host 0.0.0.0 --port 4200 --poll 1000
+    command: npx ng serve --host 0.0.0.0 --port 4200 --poll 500

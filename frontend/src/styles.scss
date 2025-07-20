@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import './app/styles/theme.scss';
+@import './app/styles/variables.scss';
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4; 
+    color: #333;
+}
+
+body {
+    // Use the CSS variables and add a smooth transition
+    background-color: var(--background-primary);
+    color: var(--foreground-primary);
+    //transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}

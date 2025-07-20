@@ -1,0 +1,50 @@
+<div class="container">
+  
+  <!-- Section 1: Create a New Example -->
+  <section class="card">
+    <h2>Create New Example</h2>
+    <form [formGroup]="newExampleForm" (ngSubmit)="onSubmit()">
+      <div class="form-field">
+        <label for="name">Name:</label>
+        <input id="name" type="text" formControlName="name" placeholder="Example Name">
+      </div>
+      <div class="form-field">
+        <label for="description">Description:</label>
+        <input id="description" type="text" formControlName="description" placeholder="A short description">
+      </div>
+      <button type="submit" [disabled]="newExampleForm.invalid">Create</button>
+    </form>
+  </section>
+
+  <!-- Section 2: View All Examples -->
+  <section class="card">
+    <h2>All Examples</h2>
+    <ng-container *ngIf="examples$ | async as examples; else loading">
+      <ul *ngIf="examples.length > 0; else noExamples" class="example-list">
+        <li *ngFor="let ex of examples">
+          <span>{{ ex.id }}: {{ ex.name }}</span>
+          <button (click)="viewExample(ex.id)">View Details</button>
+        </li>
+      </ul>
+    </ng-container>
+
+    <ng-template #loading>
+      <p>Loading examples...</p>
+    </ng-template>
+    <ng-template #noExamples>
+      <p>No examples found. Create one above!</p>
+    </ng-template>
+  </section>
+
+  <!-- Section 3: View a Single Selected Example -->
+  <section class="card" *ngIf="selectedExample">
+    <h2>Selected Example Details</h2>
+    <div class="details">
+      <p><strong>ID:</strong> {{ selectedExample.id }}</p>
+      <p><strong>Name:</strong> {{ selectedExample.name }}</p>
+      <p><strong>Description:</strong> {{ selectedExample.description }}</p>
+      <button (click)="clearSelection()">Close</button>
+    </div>
+  </section>
+
+</div>
