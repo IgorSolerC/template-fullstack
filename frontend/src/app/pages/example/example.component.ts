@@ -56,7 +56,21 @@ export class ExampleComponent implements OnInit, OnDestroy {
       catchError(error => of({ error: error }))
     );
   }
-  
+
+  deleteExample(id: number): void {
+    this.exampleService.deleteExample(id).subscribe({
+      next: () => {
+        this.loadExamples();
+        this.clearSelection();
+        this.toastr.success('Exemplo deletado com sucesso!', 'Sucesso');
+      },
+      error: (err) => {
+        console.error('Error deleting example:', err);
+        this.toastr.error((err.error.detail || err.message), 'Falha ao deletar exemplo');
+      }
+    });
+  }
+
   viewExample(id: number): void {
     this.getExampleByIdSubscription = this.exampleService.getExampleById(id).subscribe({
       next: (data) => {
@@ -66,6 +80,20 @@ export class ExampleComponent implements OnInit, OnDestroy {
       error: (err) => {
         console.error('Error fetching example:', err);
         this.toastr.error((err.error.detail || err.message), 'Erro ao carregar dados');
+      }
+    });
+  }
+
+  createExample(): void {
+    this.exampleService.createExample(this.newExampleForm.value).subscribe({
+      next: (newExample) => {
+        this.newExampleForm.reset();
+        this.loadExamples();
+        this.toastr.success('Exemplo cadastrado com sucesso!', 'Sucesso');
+      },
+      error: (err) => {
+        console.error('Error creating example:', err);
+        this.toastr.error((err.error.detail || err.message), 'Falha ao cadastrar exemplo');
       }
     });
   }
@@ -82,17 +110,7 @@ export class ExampleComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.exampleService.createExample(this.newExampleForm.value).subscribe({
-      next: (newExample) => {
-        this.newExampleForm.reset();
-        this.loadExamples();
-        this.toastr.success('Exemplo cadastrado com sucesso!', 'Sucesso');
-      },
-      error: (err) => {
-        console.error('Error creating example:', err);
-        this.toastr.error((err.error.detail || err.message), 'Falha ao cadastrar exemplo');
-      }
-    });
+    this.createExample();
   }
 
   ngOnDestroy(): void {

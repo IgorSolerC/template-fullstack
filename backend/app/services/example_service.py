@@ -14,6 +14,15 @@ class ExampleService:
         # e.g., checking for duplicates, validating data against other sources, etc.
         return self.example_repo.create_example(example_create)
 
+    def delete_example(self, example_id: int) -> Example:
+        deleted_example = self.example_repo.delete_example(example_id)
+        if not deleted_example:
+            raise HTTPException(
+                status_code=status.HTTP_404_NOT_FOUND,
+                detail=f"Exemplo com ID {example_id} não encontrado.",
+            )
+        return deleted_example
+
     def get_example_by_id(self, example_id: int) -> Example:
         example = self.example_repo.get_example_by_id(example_id)
         if not example:

@@ -54,7 +54,10 @@
       <p><strong>ID:</strong> {{ selectedExample.id }}</p>
       <p><strong>Nome:</strong> {{ selectedExample.name }}</p>
       <p><strong>Descrição:</strong> {{ selectedExample.description }}</p>
-      <button class="btn neutral" (click)="clearSelection()">Fechar</button>
+      <div class="actions">
+        <button class="btn neutral" (click)="clearSelection()">Fechar</button>
+        <button class="btn critical" (click)="deleteExample(selectedExample.id)">Deletar</button>
+      </div>
     </div>
   </section>
 

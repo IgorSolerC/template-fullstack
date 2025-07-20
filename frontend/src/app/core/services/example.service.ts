@@ -24,4 +24,9 @@ export class ExampleService {
   createExample(example: ExampleCreate): Observable<Example> {
     return this.http.post<Example>(this.apiUrl, example);
   }
+
+  deleteExample(id: number): Observable<void> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<void>(url);
+  }
 }

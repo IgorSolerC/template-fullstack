@@ -19,8 +19,7 @@
   color: var(--success-text) !important;
   .toast-close-button {
     color: var(--success-text);
-    button,
-    svg {
+    * {
       color: var(--success-text);
     }
     &:hover {
@@ -33,8 +32,7 @@
   color: var(--error-text) !important;
   .toast-close-button {
     color: var(--error-text);
-    button,
-    svg {
+    * {
       color: var(--error-text);
     }
     &:hover {
@@ -47,8 +45,7 @@
   color: var(--info-text) !important;
   .toast-close-button {
     color: var(--info-text);
-    button,
-    svg {
+    * {
       color: var(--info-text);
     }
     &:hover {
@@ -61,8 +58,7 @@
   color: var(--warning-text) !important;
   .toast-close-button {
     color: var(--warning-text);
-    button,
-    svg {
+    * {
       color: var(--warning-text);
     }
     &:hover {

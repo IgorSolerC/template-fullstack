@@ -21,5 +21,12 @@ class ExampleRepository:
         )
         self.db.add(db_example)
         self.db.commit()
-        self.db.refresh(db_example)
+        self.db.refresh(db_example) # Atualiza valores default como ID
+        return db_example
+    
+    def delete_example(self, example_id: int) -> ExampleModel | None:
+        db_example = self.get_example_by_id(example_id)
+        if db_example:
+            self.db.delete(db_example)
+            self.db.commit()
         return db_example

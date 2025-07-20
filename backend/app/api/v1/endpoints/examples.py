@@ -20,6 +20,14 @@ def create_example(example_in: ExampleCreate, service: ExampleService = Depends(
     """
     return service.create_new_example(example_in)
 
+@router.delete("/{example_id}", response_model=Example)
+def delete_example(example_id: int, service: ExampleService = Depends()):
+    """
+    Delete an example by its ID.
+    """
+    time.sleep(2) # Usado para simular uma operação demorada
+    return service.delete_example(example_id)
+
 @router.get("/{example_id}", response_model=Example)
 def read_example(example_id: int, service: ExampleService = Depends()):
     """
