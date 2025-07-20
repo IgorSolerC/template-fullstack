@@ -1,0 +1,56 @@
+:root{
+  
+}
+.ngx-toastr {
+  box-shadow: var(--header-shadow) !important;
+
+  background-color: var(--background-secondary);
+  color: var(--foreground-primary);
+  .toast-close-button {
+    color: var(--foreground-primary);
+    &:hover {
+      color: var(--foreground-primary);
+    }
+  }
+}
+
+.toast-success {
+  background-color: var(--success-primary) !important;
+  color: var(--success-text) !important;
+  .toast-close-button {
+    color: var(--success-text);
+    &:hover {
+      color: var(--success-text);
+    }
+  }
+}
+.toast-error {
+  background-color: var(--error-primary) !important;
+  color: var(--error-text) !important;
+  .toast-close-button {
+    color: var(--error-text);
+    &:hover {
+      color: var(--error-text);
+    }
+  }
+}
+.toast-info {
+  background-color: var(--info-primary) !important;
+  color: var(--info-text) !important;
+  .toast-close-button {
+    color: var(--info-text);
+    &:hover {
+      color: var(--info-text);
+    }
+  }
+}
+.toast-warning {
+  background-color: var(--warning-primary) !important;
+  color: var(--warning-text) !important;
+  .toast-close-button {
+    color: var(--warning-text);
+    &:hover {
+      color: var(--warning-text);
+    }
+  }
+}

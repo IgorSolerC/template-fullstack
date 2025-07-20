@@ -2,7 +2,9 @@
 
 :root {
   // -- Light Theme Variables --
-  --background-primary: #ffffff;      // Main background
+  --background-primary-raw: 255, 255, 255;
+  --background-primary: rgb(var(--background-primary-raw));      // Main background
+  
   --background-secondary: #f8f9fa;    // Cards, headers, etc.
   --foreground-primary: #212529;      // Main text color
   --foreground-secondary: #6c757d;    // Muted text
@@ -10,16 +12,37 @@
   --accent-primary-hover: #0056b3;    // Hover state for brand color
   --border-color: #dee2e6;
   --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+  --warning-primary: #ffc107;
+  --error-primary: #dc3545;
+  --success-primary: #28a745;
+  --info-primary:#007bff;
+  --warning-text: #f8f9fa;
+  --error-text: #f8f9fa;
+  --success-text: #f8f9fa;
+  --info-text: #f8f9fa;
+
 }
 
 body.dark-mode {
   // -- Dark Theme Overrides --
-  --background-primary: #121212;
-  --background-secondary: #1e1e1e;
-  --foreground-primary: #e9ecef;
-  --foreground-secondary: #adb5bd;
-  --accent-primary: #4dabf7;
-  --accent-primary-hover: #1c7ed6;
+  --background-primary-raw: 18, 18, 18;
+  --background-primary: rgb(var(--background-primary-raw)); // Main background
+
+  --background-secondary: #1e1e1e;     // Cards, headers, etc.  
+  --foreground-primary: #e9ecef;       // Main text color     
+  --foreground-secondary: #adb5bd;     // Muted text        
+  --accent-primary: #3195e6;           // Main brand color for links, buttons    
+  --accent-primary-hover: #1c7ed6;     // Hover state for brand color            
   --border-color: #343a40;
   --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+
+  --warning-primary: #ffc107;
+  --error-primary: #dc3545;
+  --success-primary: #28a745;
+  --info-primary:#007bff;
+  --warning-text: #f8f9fa;
+  --error-text: #f8f9fa;
+  --success-text: #f8f9fa;
+  --info-text: #f8f9fa;
 }

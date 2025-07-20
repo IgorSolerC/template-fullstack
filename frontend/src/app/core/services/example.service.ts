@@ -16,7 +16,7 @@ export class ExampleService {
     return this.http.get<Example[]>(this.apiUrl);
   }
 
-   getExampleById(id: number): Observable<Example> {
+  getExampleById(id: number): Observable<Example> {
     const url = `${this.apiUrl}/${id}`;
     return this.http.get<Example>(url);
   }

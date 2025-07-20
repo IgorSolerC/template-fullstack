@@ -19,6 +19,6 @@ class ExampleService:
         if not example:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail=f"Example with ID {example_id} not found",
+                detail=f"Exemplo com ID {example_id} não encontrado.",
             )
         return example

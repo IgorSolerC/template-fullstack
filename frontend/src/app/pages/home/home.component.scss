@@ -4,5 +4,11 @@
     align-items: center;
     justify-content: center;
     background-color: var(--background-primary);
-    min-height: 70vh;
+    height: calc(100vh - 130px); /* Adjust height to account for header/footer */
+
+    i {
+        font-size: 70px;
+        color: var(--foreground-primary);
+        margin-top: 100px;
+    }
 }

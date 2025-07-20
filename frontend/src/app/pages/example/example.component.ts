@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription, toArray } from 'rxjs';
 import { ExampleService } from '../../core/services/example.service';
 import { Example } from '../../domain/models/example';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-example',
@@ -14,14 +16,16 @@ import { Example } from '../../domain/models/example';
   templateUrl: './example.component.html',
   styleUrl: './example.component.scss'
 })
-export class ExampleComponent implements OnInit {
+export class ExampleComponent implements OnInit, OnDestroy {
   // Inject services using the modern `inject` function
   private exampleService = inject(ExampleService);
   private fb = inject(FormBuilder);
+  private toastr = inject(ToastrService);
 
   // Observable to hold the list of examples
   examples$!: Observable<Example[]>;
-  
+  getExampleByIdSubscription: Subscription | null = null;
+
   // To hold the details of a single fetched example
   selectedExample: Example | null = null;
   
@@ -32,7 +36,7 @@ export class ExampleComponent implements OnInit {
     // Initialize the form on component load
     this.newExampleForm = this.fb.group({
       name: ['', Validators.required],
-      description: ['', Validators.required]
+      description: ['', Validators.required] 
     });
 
     // Load the initial list of examples
@@ -42,12 +46,17 @@ export class ExampleComponent implements OnInit {
   loadExamples(): void {
     this.examples$ = this.exampleService.getExamples();
   }
-
-  // Fetches a single example and displays it
+  
   viewExample(id: number): void {
-    this.exampleService.getExampleById(id).subscribe({
-      next: (data) => this.selectedExample = data,
-      error: (err) => console.error('Error fetching example:', err)
+    this.getExampleByIdSubscription = this.exampleService.getExampleById(id).subscribe({
+      next: (data) => {
+        this.selectedExample = data;
+        this.toastr.info('Exemplo carregado com sucesso!', 'Info');
+      },
+      error: (err) => {
+        console.error('Error fetching example:', err);
+        this.toastr.error('Falha ao carregar o exemplo. Por favor, tente novamente. ' + (err.error.detail || err.message), 'Error');
+      }
     });
   }
 
@@ -66,9 +75,19 @@ export class ExampleComponent implements OnInit {
     this.exampleService.createExample(this.newExampleForm.value).subscribe({
       next: (newExample) => {
         this.newExampleForm.reset();
-        this.loadExamples();        
+        this.loadExamples();
+        this.toastr.success('Exemplo cadastrado com sucesso!', 'Sucesso');
       },
-      error: (err) => console.error('Error creating example:', err)
+      error: (err) => {
+        console.error('Error creating example:', err);
+        this.toastr.error('Falha ao cadastrar exemplo.', 'Erro');
+      }
     });
+  }
+
+  ngOnDestroy(): void {
+    if(this.getExampleByIdSubscription) {
+      this.getExampleByIdSubscription.unsubscribe();
+    }
   }
 }

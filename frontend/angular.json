@@ -25,6 +25,11 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "node_modules"
+              ]
+            },
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"

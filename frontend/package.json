@@ -27,6 +27,8 @@
     "@angular/forms": "^20.1.2",
     "@angular/platform-browser": "^20.1.2",
     "@angular/router": "^20.1.2",
+    "ngx-spinner": "^19.0.0",
+    "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"

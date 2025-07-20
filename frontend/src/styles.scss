@@ -1,23 +1,24 @@
+@use 'ngx-spinner/animations/square-loader.css'; 
+@use 'ngx-toastr/toastr';
 @import './app/styles/theme.scss';
 @import './app/styles/variables.scss';
+@import './app/styles/toastr.scss'; 
 
 html, body {
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #f4f4f4; 
-    color: #333;
+    color: #333; 
 }
 
 body {
-    // Use the CSS variables and add a smooth transition
     background-color: var(--background-primary);
     color: var(--foreground-primary);
-    //transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
 // --- UNIVERSAL TRANSITION RULE ---
-// This is the magic. It applies a smooth transition to every element.
+// It applies a smooth transition to every element.
 // The `*` selector targets all elements.
 // `*::before` and `*::after` target all pseudo-elements.
 *,
