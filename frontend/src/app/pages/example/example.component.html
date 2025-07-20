@@ -1,3 +1,5 @@
+ <p-confirmdialog />
+
 <div class="container">
   
   <!-- Section 1: Create a New Example -->
@@ -45,7 +47,7 @@
     <ng-template #noExamples>
       <p>Nenhum exemplo encontrado. Crie um acima!</p>
     </ng-template>
-  </section>
+  </section> 
 
   <!-- Section 3: View a Single Selected Example -->
   <section class="card" *ngIf="selectedExample">
@@ -56,9 +58,8 @@
       <p><strong>Descrição:</strong> {{ selectedExample.description }}</p>
       <div class="actions">
         <button class="btn neutral" (click)="clearSelection()">Fechar</button>
-        <button class="btn critical" (click)="deleteExample(selectedExample.id)">Deletar</button>
+        <button class="btn critical" (click)="modalDeleteExample($event, selectedExample.id)">Deletar</button>
       </div>
     </div>
   </section>
-
 </div>

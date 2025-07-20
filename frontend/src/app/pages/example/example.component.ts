@@ -6,6 +6,10 @@ import { ExampleService } from '../../core/services/example.service';
 import { Example } from '../../domain/models/example';
 import { ToastrService } from 'ngx-toastr';
 
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialog } from 'primeng/confirmdialog';
+import { ButtonModule } from 'primeng/button';
+
 interface ExamplesState {
   data?: Example[];
   error?: any; 
@@ -15,8 +19,11 @@ interface ExamplesState {
   selector: 'app-example',
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ConfirmDialog,
+    ButtonModule 
   ],
+  providers: [ConfirmationService, MessageService],
   templateUrl: './example.component.html',
   styleUrl: './example.component.scss'
 })
@@ -25,6 +32,30 @@ export class ExampleComponent implements OnInit, OnDestroy {
   private exampleService = inject(ExampleService);
   private fb = inject(FormBuilder);
   private toastr = inject(ToastrService);
+
+constructor(private confirmationService: ConfirmationService, private messageService: MessageService) {}
+
+  modalDeleteExample(event: Event, id: number): void {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Tem certeza que deseja deletar este registro?',
+      header: 'Confirmação',
+      closable: true,
+      closeOnEscape: true,
+      icon: 'fa-solid fa-triangle-exclamation',
+      // Corrected properties for button labels
+      acceptLabel: 'Deletar',
+      rejectLabel: 'Cancelar',
+
+      // Properties for styling the buttons
+      acceptButtonStyleClass: 'btn critical',
+      rejectButtonStyleClass: 'btn neutral',
+      accept: () => {
+        this.deleteExample(id);
+      },
+      reject: () => {},
+    });
+  }
 
   // Observable to hold the list of examples
   examples$!: Observable<ExamplesState>;
