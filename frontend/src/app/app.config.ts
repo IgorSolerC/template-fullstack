@@ -28,11 +28,13 @@ export const appConfig: ApplicationConfig = {
       closeButton: true,
     }),
     provideAnimationsAsync(),
-        providePrimeNG({
-            theme: {
-                preset: Aura
-            }
-        })
-    
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+        options: {
+          darkModeSelector: '.dark-mode',
+        }
+      }
+    })
   ]
 };

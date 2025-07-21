@@ -20,8 +20,10 @@ export class ThemeService {
         localStorage.setItem('theme', this.theme());
         if (this.theme() === 'dark') {
           document.body.classList.add('dark-mode');
+          document.documentElement.classList.add('dark-mode');
         } else {
           document.body.classList.remove('dark-mode');
+          document.documentElement.classList.remove('dark-mode');
         }
       }
     });
