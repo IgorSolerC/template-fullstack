@@ -8,7 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialog } from 'primeng/confirmdialog';
-import { ButtonModule } from 'primeng/button';
+import { SkeletonModule } from 'primeng/skeleton';
 
 interface ExamplesState {
   data?: Example[];
@@ -21,7 +21,7 @@ interface ExamplesState {
     CommonModule,
     ReactiveFormsModule,
     ConfirmDialog,
-    ButtonModule 
+    SkeletonModule,
   ],
   providers: [ConfirmationService, MessageService],
   templateUrl: './example.component.html',

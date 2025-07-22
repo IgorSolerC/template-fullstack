@@ -19,7 +19,7 @@
   </section>
 
   <!-- Section 2: View All Examples -->
-  <section class="card">
+  <section class="card registros-container">
     <h2>Todos os exemplos</h2>
     <ng-container *ngIf="examples$ | async as state; else loading">
       <div *ngIf="state.error; else showExamples" class="error-message">
@@ -42,7 +42,20 @@
     </ng-container>
 
     <ng-template #loading>
-      <p>Carregando exemplos...</p>
+      <div class="skeleton-container">
+      <div class="skeleton-row">
+        <p-skeleton height="1,5rem" style="flex-grow: 85;"/>
+        <p-skeleton height="1.5rem" style="flex-grow: 15;"/>
+      </div>
+      <div class="skeleton-row">
+        <p-skeleton height="1,5rem" style="flex-grow: 85;"/>
+        <p-skeleton height="1.5rem" style="flex-grow: 15;"/>
+      </div>
+      <div class="skeleton-row">
+        <p-skeleton height="1,5rem" style="flex-grow: 85;"/>
+        <p-skeleton height="1.5rem" style="flex-grow: 15;"/>
+      </div>
+      </div>
     </ng-template>
     <ng-template #noExamples>
       <p>Nenhum exemplo encontrado. Crie um acima!</p>

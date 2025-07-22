@@ -66,6 +66,24 @@ form {
   }
 }
 
+.registros-container {
+  .skeleton-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .skeleton-row{
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+
+      p-skeleton {
+        flex: 1
+      }
+    }
+  }
+}
+
 // Loading/empty state text styling
 .loading, .noExamples {
   color: var(--foreground-secondary);
