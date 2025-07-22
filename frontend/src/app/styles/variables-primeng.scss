@@ -2,16 +2,10 @@
   :root{
     --p-primary-color: var(--accent-primary);
     --p-overlay-modal-background: var(--background-primary);
-    --surface-overlay: var(--background-primary);
-    
-    --p-dialog-background: var(--background-primary);
   }
-  
-  body.dark-mode{
+
+  html.dark-mode{
     --p-primary-color: var(--accent-primary);
     --p-overlay-modal-background: var(--background-primary);
-    --surface-overlay: var(--background-primary);
-    
-    --p-dialog-background: var(--background-primary);
   }
 }
