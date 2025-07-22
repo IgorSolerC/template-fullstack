@@ -1,0 +1,16 @@
+@layer app-primeng-theme {
+  :root{
+    --p-primary-color: var(--accent-primary);
+
+    --p-overlay-modal-background: var(--background-primary);
+    --p-content-background: var(--background-secondary);
+
+    --p-content-color: var(--foreground-primary);
+    --p-text-color: var(--foreground-primary);
+
+    --p-content-border-color: var(--border-color);
+    --p-overlay-modal-border-color: var(--border-color);
+
+    --p-button-text-secondary-color: var(--foreground-secondary);
+  }
+}

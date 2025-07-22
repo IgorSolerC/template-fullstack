@@ -1,9 +1,14 @@
 @use 'ngx-spinner/animations/square-loader.css'; 
 @use 'ngx-toastr/toastr';
-@import './app/styles/theme.scss';
+@import './app/styles/themes/light.scss';
+@import './app/styles/themes/dark.scss';
+@import './app/styles/themes/debug.scss';
+@import './app/styles/variables-primeng.scss';
 @import './app/styles/variables.scss';
 @import './app/styles/toastr.scss'; 
 @import './app/styles/components.scss';
+
+@layer app-style{
 
 html, body {
     margin: 0;
@@ -26,7 +31,7 @@ body {
   // Apply a transition to the most common animatable properties
   transition: background-color 0.2s ease-in-out, 
               border-color 0.2s ease-in-out, 
-              color 0.2s ease-in-out,
+            //   color 0.2s ease-in-out,
               box-shadow 0.2s ease-in-out,
               opacity 0.2s ease-in-out;
 }
@@ -45,4 +50,6 @@ a {
     &:hover {
         color: var(--accent-primary-hover);
     }
+}
+
 }

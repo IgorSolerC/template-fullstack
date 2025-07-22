@@ -11,6 +11,7 @@ export class ThemeService {
   // A signal to hold the current theme.
   // We initialize it by checking localStorage or system preference.
   theme = signal<Theme>(this.getInitialTheme());
+  themeModeString = 'dark-mode';
 
   constructor() {
     // An effect that runs whenever the theme signal changes.
@@ -19,10 +20,13 @@ export class ThemeService {
       if (isPlatformBrowser(this.platformId)) {
         localStorage.setItem('theme', this.theme());
         if (this.theme() === 'dark') {
-          document.body.classList.add('dark-mode');
+          document.body.classList.add(this.themeModeString);
+          document.documentElement.classList.add(this.themeModeString);
         } else {
-          document.body.classList.remove('dark-mode');
+          document.body.classList.remove(this.themeModeString);
+          document.documentElement.classList.remove(this.themeModeString);
         }
+        document.documentElement.offsetHeight;
       }
     });
   }

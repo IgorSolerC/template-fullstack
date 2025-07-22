@@ -1,0 +1,44 @@
+/* TEMA ESCURO */
+@layer app-theme{
+
+html.dark-mode {
+    --background-primary-raw: 18, 18, 18;  // RGB values
+    --background-primary: rgb(var(--background-primary-raw)); // Main background
+
+    --background-secondary: #1e1e1e;     // Cards, headers, etc.
+    --foreground-primary: #e9ecef;       // Main text color
+    --foreground-secondary: #adb5bd;     // Muted text
+    --border-color: #343a40;
+
+    --warning-primary: #ffc107;
+    --warning-text: #f8f9fa;
+    --error-primary: #d41d39;
+    --error-text: #f8f9fa;
+    --success-primary: #28a745;
+    --success-text: #f8f9fa;
+    --info-primary:#007bff;
+    --info-text: #f8f9fa;
+
+    --accent-primary: #3195e6;           // Main brand color for links, buttons
+    --accent-primary-hover: #1c7ed6;     // Hover state for brand color
+
+    --accent-btn: var(--accent-primary);           // Main brand color for links, buttons
+    --accent-btn-hover: var(--accent-primary-hover);     // Hover state for brand color
+    --accent-btn-text: #e9ecef;       // Text color for brand buttons
+    --neutral-btn: var(--border-color); // Neutral color for buttons
+    --neutral-btn-hover: #292f35;     // Hover state for neutral color
+    --neutral-btn-text: #e9ecef;      // Text color for neutral buttons
+    --critical-btn: var(--error-primary);// Critical color for buttons, like deletes
+    --critical-btn-hover: #c60e3c;     // Hover state for critical color
+    --critical-btn-text: #ffffff;      // Text color for critical buttons
+
+    --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    --heavy-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    --medium-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    --light-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+
+    --disabled-button-bg: var(--border-color);
+    --disabled-button-text: var(--foreground-secondary);
+
+}
+}

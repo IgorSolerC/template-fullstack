@@ -1,73 +1,90 @@
-/* BOTOES */
-.btn {
-    padding: 0.6rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
-    
-    background-color: var(--accent-btn);
-    color: var(--accent-btn-text);
+@layer app-components{
 
-    &:hover {
-        background-color: var(--accent-btn-hover);
-    }
+    /* BOTOES */
+    .btn {
+        padding: 0.6rem 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-weight: 500;
+        
+        background-color: var(--accent-btn);
+        color: var(--accent-btn-text);
 
-    &:disabled {
-        background-color: var(--disabled-button-bg);
-        color: var(--disabled-button-text);
-        cursor: not-allowed;
-    }
-
-    // VARIANTES DE BOTÕES
-    &.neutral {
-        background-color: var(--neutral-btn);
-        color: var(--neutral-btn-text);
-
-        &:hover {
-            background-color: var(--neutral-btn-hover);
+        * {
+            color: var(--accent-btn-text);
         }
-    }
-
-    &.critical {
-        background-color: var(--critical-btn);
-        color: var(--critical-btn-text);
         
         &:hover {
-            background-color: var(--critical-btn-hover);
+            background-color: var(--accent-btn-hover);
+        }
+
+        &:disabled {
+            background-color: var(--disabled-button-bg);
+            color: var(--disabled-button-text);
+            * {
+                color: var(--disabled-btn-text);
+            }
+            cursor: not-allowed;
+        }
+
+        // VARIANTES DE BOTÕES
+        &.neutral {
+            background-color: var(--neutral-btn);
+            color: var(--neutral-btn-text);
+            * {
+                color: var(--neutral-btn-text);
+            }
+
+            &:hover {
+                background-color: var(--neutral-btn-hover);
+            }
+        }
+
+        &.critical {
+            background-color: var(--critical-btn);
+            color: var(--critical-btn-text);
+            * {
+                color: var(--critical-btn-text);
+            }
+            
+            &:hover {
+                background-color: var(--critical-btn-hover);
+            }
         }
     }
-}
 
-/* CARDS */
-.card {
-  background-color: var(--background-secondary);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--light-shadow);
-  
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-
-  h2 {
-    margin-top: 0;
-    color: var(--foreground-primary);
-    border-bottom: 1px solid var(--border-color);
-    
-    padding-bottom: 0.5rem;
-  }
-}
-
-/* INPUTS */
-.input {
-    padding: 0.5rem;
-
-    background-color: var(--background-primary);
+    /* CARDS */
+    .card {
+    background-color: var(--background-secondary);
     border: 1px solid var(--border-color);
-    color: var(--foreground-primary);
+    box-shadow: var(--light-shadow);
+    
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
 
-    border-radius: 4px;
-
-    &::placeholder {
-        color: var(--foreground-secondary);
+    h2 {
+        margin-top: 0;
+        color: var(--foreground-primary);
+        border-bottom: 1px solid var(--border-color);
+        
+        padding-bottom: 0.5rem;
     }
+    }
+
+    /* INPUTS */
+    .input {
+        padding: 0.5rem;
+
+        background-color: var(--background-primary);
+        border: 1px solid var(--border-color);
+        color: var(--foreground-primary);
+
+        border-radius: 4px;
+
+        &::placeholder {
+            color: var(--foreground-secondary);
+        }
+    }
+
 }

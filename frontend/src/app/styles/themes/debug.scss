@@ -1,0 +1,43 @@
+/* DEBUG THEME */ 
+@layer app-theme { 
+
+html.debug-mode { 
+    --background-primary-raw: 0, 0, 139;  /* Dark Blue */ 
+    --background-primary: rgb(var(--background-primary-raw)); 
+
+    --background-secondary: #000052;     /* Navy Blue */ 
+    --foreground-primary: #ffff00;       /* Yellow */ 
+    --foreground-secondary: #ff00ff;     /* Magenta */ 
+    --border-color: #ff1493;             /* Deep Pink */ 
+
+    --warning-primary: #ffa500;           /* Orange */ 
+    --warning-text: #000000; 
+    --error-primary: #ff0000;             /* Red */ 
+    --error-text: #ffffff; 
+    --success-primary: #00ff00;           /* Lime Green */ 
+    --success-text: #000000; 
+    --info-primary:#00ffff;               /* Cyan */ 
+    --info-text: #000000; 
+
+    --accent-primary: #ffc0cb;           /* Pink */ 
+    --accent-primary-hover: #ff69b4;     /* Hot Pink */ 
+
+    --accent-btn: var(--accent-primary); 
+    --accent-btn-hover: var(--accent-primary-hover); 
+    --accent-btn-text: #000000; 
+    --neutral-btn: var(--border-color); 
+    --neutral-btn-hover: #db7093;     /* Pale Violet Red */ 
+    --neutral-btn-text: #000000; 
+    --critical-btn: var(--error-primary); 
+    --critical-btn-hover: #dc143c;     /* Crimson */ 
+    --critical-btn-text: #ffffff; 
+
+    --header-shadow: 0 2px 4px rgba(255, 0, 255, 0.4); 
+    --heavy-shadow: 0 2px 4px rgba(255, 0, 255, 0.4); 
+    --medium-shadow: 0 2px 4px rgba(255, 0, 255, 0.4); 
+    --light-shadow: 0 2px 4px rgba(255, 0, 255, 0.4); 
+
+    --disabled-button-bg: var(--border-color); 
+    --disabled-button-text: var(--foreground-secondary); 
+} 
+} 

@@ -1,0 +1,45 @@
+/* TEMA CLARO */
+@layer app-theme{
+
+:root {
+    --background-primary-raw: 255, 255, 255; // RGB values
+    --background-primary: rgb(var(--background-primary-raw));      // Main background
+
+    --background-secondary: #f8f9fa;    // Cards, headers, etc.
+    --foreground-primary: #212529;      // Main text color
+    --foreground-secondary: #6c757d;    // Muted text
+    --border-color: #dee2e6;
+
+    --warning-primary: #ffc107;
+    --warning-text: #f8f9fa;
+    --error-primary: #dc3545;
+    --error-text: #f8f9fa;
+    --success-primary: #28a745;
+    --success-text: #f8f9fa;
+    --info-primary:#007bff;
+    --info-text: #f8f9fa;
+
+    --accent-primary: #007bff;            // Main brand color for links, buttons
+    --accent-primary-hover: #0056b3;      // Hover state for brand color
+
+    --accent-btn: var(--accent-primary);           // Main brand color for links, buttons
+    --accent-btn-hover: var(--accent-primary-hover);     // Hover state for brand color
+    --accent-btn-text: #ffffff;       // Text color for brand buttons
+    --neutral-btn: var(--border-color); // Neutral color for buttons
+    --neutral-btn-hover: #c7cdd3;     // Hover state for neutral color
+    --neutral-btn-text: #212529;      // Text color for neutral buttons
+    --critical-btn: var(--error-primary);// Critical color for buttons, like deletes
+    --critical-btn-hover: #d41d39;     // Hover state for critical color
+    --critical-btn-text: #ffffff;      // Text color for critical buttons
+
+    --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --heavy-shadow: 0 10px 18px rgba(0, 0, 0, 0.09);
+    --medium-shadow: 0 7px 13px rgba(0, 0, 0, 0.08);
+    --light-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+    --disabled-button-bg: var(--border-color);
+    --disabled-button-text: var(--foreground-secondary);
+
+    --surface-overlay: var(--background-primary);
+}
+}

@@ -6,6 +6,10 @@ import { ExampleService } from '../../core/services/example.service';
 import { Example } from '../../domain/models/example';
 import { ToastrService } from 'ngx-toastr';
 
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmDialog } from 'primeng/confirmdialog';
+import { SkeletonModule } from 'primeng/skeleton';
+
 interface ExamplesState {
   data?: Example[];
   error?: any; 
@@ -15,8 +19,11 @@ interface ExamplesState {
   selector: 'app-example',
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ConfirmDialog,
+    SkeletonModule,
   ],
+  providers: [ConfirmationService, MessageService],
   templateUrl: './example.component.html',
   styleUrl: './example.component.scss'
 })
@@ -25,6 +32,30 @@ export class ExampleComponent implements OnInit, OnDestroy {
   private exampleService = inject(ExampleService);
   private fb = inject(FormBuilder);
   private toastr = inject(ToastrService);
+
+constructor(private confirmationService: ConfirmationService, private messageService: MessageService) {}
+
+  modalDeleteExample(event: Event, id: number): void {
+    this.confirmationService.confirm({
+      target: event.target as EventTarget,
+      message: 'Tem certeza que deseja deletar este registro?',
+      header: 'Confirmação',
+      closable: true,
+      closeOnEscape: true,
+      icon: 'fa-solid fa-triangle-exclamation',
+      // Corrected properties for button labels
+      acceptLabel: 'Deletar',
+      rejectLabel: 'Cancelar',
+
+      // Properties for styling the buttons
+      acceptButtonStyleClass: 'btn critical',
+      rejectButtonStyleClass: 'btn neutral',
+      accept: () => {
+        this.deleteExample(id);
+      },
+      reject: () => {},
+    });
+  }
 
   // Observable to hold the list of examples
   examples$!: Observable<ExamplesState>;
@@ -49,26 +80,12 @@ export class ExampleComponent implements OnInit, OnDestroy {
 
   loadExamples(): void {
 
-    this.examples$ = this.exampleService.getExamples().pipe(
+    this.examples$ = this.exampleService.getExamples({showSpinner: false}).pipe(
       // On success, map the array to the 'data' property of our state object
       map(examples => ({ data: examples })),
       // On error, catch it and return an observable of the state object with the 'error' property set
       catchError(error => of({ error: error }))
     );
-  }
-
-  deleteExample(id: number): void {
-    this.exampleService.deleteExample(id).subscribe({
-      next: () => {
-        this.loadExamples();
-        this.clearSelection();
-        this.toastr.success('Exemplo deletado com sucesso!', 'Sucesso');
-      },
-      error: (err) => {
-        console.error('Error deleting example:', err);
-        this.toastr.error((err.error.detail || err.message), 'Falha ao deletar exemplo');
-      }
-    });
   }
 
   viewExample(id: number): void {
@@ -94,6 +111,20 @@ export class ExampleComponent implements OnInit, OnDestroy {
       error: (err) => {
         console.error('Error creating example:', err);
         this.toastr.error((err.error.detail || err.message), 'Falha ao cadastrar exemplo');
+      }
+    });
+  }
+
+  deleteExample(id: number): void {
+    this.exampleService.deleteExample(id).subscribe({
+      next: () => {
+        this.loadExamples();
+        this.clearSelection();
+        this.toastr.success('Exemplo deletado com sucesso!', 'Sucesso');
+      },
+      error: (err) => {
+        console.error('Error deleting example:', err);
+        this.toastr.error((err.error.detail || err.message), 'Falha ao deletar exemplo');
       }
     });
   }
