@@ -1,5 +1,7 @@
 import { effect, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import * as jsonData from '../../styles/themes.json';
+
 
 export type Theme = 'light' | 'dark';
 
@@ -7,7 +9,7 @@ export type Theme = 'light' | 'dark';
 export class ThemeService {
   // We need PLATFORM_ID to safely access browser-only APIs like `localStorage`.
   private platformId = inject(PLATFORM_ID);
-  
+
   // A signal to hold the current theme.
   // We initialize it by checking localStorage or system preference.
   theme = signal<Theme>(this.getInitialTheme());
@@ -18,14 +20,21 @@ export class ThemeService {
     effect(() => {
       if (isPlatformBrowser(this.platformId)) {
         localStorage.setItem('theme', this.theme());
+
         if (this.theme() === 'dark') {
-          document.body.classList.add('dark-mode');
           document.documentElement.classList.add('dark-mode');
         } else {
-          document.body.classList.remove('dark-mode');
           document.documentElement.classList.remove('dark-mode');
         }
-        document.documentElement.offsetHeight;
+
+        const themeJson = JSON.parse(JSON.stringify(jsonData));
+        const currentThemeObject = themeJson.themes[this.theme()];
+
+        if (currentThemeObject) {
+          Object.entries(currentThemeObject).forEach(([property, value]) => {
+            document.documentElement.style.setProperty(`--${property}`, value as string);
+          });
+        }
       }
     });
   }
