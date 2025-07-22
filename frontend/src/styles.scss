@@ -8,6 +8,8 @@
 @import './app/styles/toastr.scss'; 
 @import './app/styles/components.scss';
 
+@layer app-style{
+
 html, body {
     margin: 0;
     padding: 0;
@@ -48,4 +50,6 @@ a {
     &:hover {
         color: var(--accent-primary-hover);
     }
+}
+
 }

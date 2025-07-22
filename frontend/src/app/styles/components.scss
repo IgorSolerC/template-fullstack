@@ -11,6 +11,10 @@
         background-color: var(--accent-btn);
         color: var(--accent-btn-text);
 
+        * {
+            color: var(--accent-btn-text);
+        }
+        
         &:hover {
             background-color: var(--accent-btn-hover);
         }
@@ -18,6 +22,9 @@
         &:disabled {
             background-color: var(--disabled-button-bg);
             color: var(--disabled-button-text);
+            * {
+                color: var(--disabled-btn-text);
+            }
             cursor: not-allowed;
         }
 
@@ -25,6 +32,9 @@
         &.neutral {
             background-color: var(--neutral-btn);
             color: var(--neutral-btn-text);
+            * {
+                color: var(--neutral-btn-text);
+            }
 
             &:hover {
                 background-color: var(--neutral-btn-hover);
@@ -34,6 +44,9 @@
         &.critical {
             background-color: var(--critical-btn);
             color: var(--critical-btn-text);
+            * {
+                color: var(--critical-btn-text);
+            }
             
             &:hover {
                 background-color: var(--critical-btn-hover);
