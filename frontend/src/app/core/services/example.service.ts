@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient as httpClient, HttpContext } from '@angular/common/http';
 import { Example, ExampleCreate } from '../../domain/models/example';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment.development';
+import { environment } from '../../../environments/environment';
 import { createHttpOptions, RequestOptions } from '../../shared/utils/http.utils'
 
 @Injectable({

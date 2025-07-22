@@ -1,5 +1,6 @@
 import { effect, inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 export type Theme = 'light' | 'dark';
 
@@ -11,9 +12,11 @@ export class ThemeService {
   // A signal to hold the current theme.
   // We initialize it by checking localStorage or system preference.
   theme = signal<Theme>(this.getInitialTheme());
+  
   themeModeString = 'dark-mode';
-
+  
   constructor() {
+    if(environment.debug) this.themeModeString = 'debug-mode'
     // An effect that runs whenever the theme signal changes.
     // This is where we update the DOM and localStorage.
     effect(() => {
