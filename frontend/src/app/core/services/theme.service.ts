@@ -25,6 +25,7 @@ export class ThemeService {
           document.body.classList.remove('dark-mode');
           document.documentElement.classList.remove('dark-mode');
         }
+        document.documentElement.offsetHeight;
       }
     });
   }
