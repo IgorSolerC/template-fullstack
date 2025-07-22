@@ -7,7 +7,7 @@ class ExampleBase(BaseModel):
 class ExampleCreate(ExampleBase):
     pass
 
-class Example(ExampleBase):
+class ExampleRead(ExampleBase):
     id: int
 
     # This allows the model to be created from ORM objects
