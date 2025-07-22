@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient as httpClient } from '@angular/common/http';
+import { HttpClient as httpClient, HttpContext } from '@angular/common/http';
 import { Example, ExampleCreate } from '../../domain/models/example';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment.development';
+import { createHttpOptions, RequestOptions } from '../../shared/utils/http.utils'
 
 @Injectable({
   providedIn: 'root'
@@ -12,21 +13,22 @@ export class ExampleService {
   
   constructor(private http: httpClient) { }
 
-  getExamples(): Observable<Example[]> {
-    return this.http.get<Example[]>(this.apiUrl);
+  getExamples(options: RequestOptions = {}): Observable<Example[]> {
+    return this.http.get<Example[]>(this.apiUrl, createHttpOptions(options));
   }
 
-  getExampleById(id: number): Observable<Example> {
+  getExampleById(id: number, options: RequestOptions = {}): Observable<Example> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.get<Example>(url);
+    return this.http.get<Example>(url, createHttpOptions(options));
   }
   
-  createExample(example: ExampleCreate): Observable<Example> {
-    return this.http.post<Example>(this.apiUrl, example);
+  createExample(example: ExampleCreate,  options: RequestOptions = {}): Observable<Example> {
+    return this.http.post<Example>(this.apiUrl, example, createHttpOptions(options));
   }
 
-  deleteExample(id: number): Observable<void> {
+  deleteExample(id: number, options: RequestOptions = {}): Observable<void> {
     const url = `${this.apiUrl}/${id}`;
-    return this.http.delete<void>(url);
+    return this.http.delete<void>(url, createHttpOptions(options));
   }
+  
 }
