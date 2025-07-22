@@ -80,26 +80,12 @@ constructor(private confirmationService: ConfirmationService, private messageSer
 
   loadExamples(): void {
 
-    this.examples$ = this.exampleService.getExamples().pipe(
+    this.examples$ = this.exampleService.getExamples({showSpinner: false}).pipe(
       // On success, map the array to the 'data' property of our state object
       map(examples => ({ data: examples })),
       // On error, catch it and return an observable of the state object with the 'error' property set
       catchError(error => of({ error: error }))
     );
-  }
-
-  deleteExample(id: number): void {
-    this.exampleService.deleteExample(id).subscribe({
-      next: () => {
-        this.loadExamples();
-        this.clearSelection();
-        this.toastr.success('Exemplo deletado com sucesso!', 'Sucesso');
-      },
-      error: (err) => {
-        console.error('Error deleting example:', err);
-        this.toastr.error((err.error.detail || err.message), 'Falha ao deletar exemplo');
-      }
-    });
   }
 
   viewExample(id: number): void {
@@ -125,6 +111,20 @@ constructor(private confirmationService: ConfirmationService, private messageSer
       error: (err) => {
         console.error('Error creating example:', err);
         this.toastr.error((err.error.detail || err.message), 'Falha ao cadastrar exemplo');
+      }
+    });
+  }
+
+  deleteExample(id: number): void {
+    this.exampleService.deleteExample(id).subscribe({
+      next: () => {
+        this.loadExamples();
+        this.clearSelection();
+        this.toastr.success('Exemplo deletado com sucesso!', 'Sucesso');
+      },
+      error: (err) => {
+        console.error('Error deleting example:', err);
+        this.toastr.error((err.error.detail || err.message), 'Falha ao deletar exemplo');
       }
     });
   }
