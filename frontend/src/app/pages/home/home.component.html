@@ -1,5 +1,38 @@
 <div class="home-container">
-    <h1>Bem-vindo à Página Inicial</h1>
-    <p>Acesse a página <a routerLink="/example">Exemplo</a> para visualizar exemplos de uso.</p>
-    <i class="fa-solid fa-hand-spock"></i>
+
+    <!-- Header Section -->
+    <div class="header-content">
+        <i class="fa-solid fa-hand-spock fa-2x mb-3"></i>
+        <h1>Bem-vindo ao Fullstack Template</h1>
+        <p class="p-text-secondary">O ponto de partida perfeito para seus projetos. Criado com a experiência de quem já esteve na sua pele.</p>
+        <p-button label="Veja um Exemplo" routerLink="/example" styleClass="p-button-lg mt-3"></p-button>
+    </div>
+
+    <!-- Creators' Section -->
+    <div class="creators-section mt-6">
+        <h2>Uma Palavra dos Criadores</h2>
+        <div class="p-grid p-jc-center mt-4">
+            <div class="p-col-12 p-md-5">
+                <p-fieldset>
+                    <ng-template #header>
+                        Igor Soler - co-criador
+                    </ng-template>
+                    <p class="m-0">
+                        "Este é um ótimo template que pode poupar a dor de cabeça inicial de estruturar um projeto. Felizmente a criação deste template só me custou dezenas de horas e alguns anos de vida!"
+                    </p>
+                </p-fieldset>
+            </div>
+            <div class="p-col-12 p-md-5">
+                <p-fieldset>
+                    <ng-template #header>
+                        Rafael Miranda - co-criador
+                    </ng-template>
+                    <p class="m-0">
+                        "Fullstack Template é possívelmente o melhor template fullstack já feito por 2 pessoas de 22 anos no Brasil no ano de 2025 entre as datas de 21/07 a 22/07."
+                    </p>
+                </p-fieldset>
+            </div>
+        </div>
+    </div>
+
 </div>

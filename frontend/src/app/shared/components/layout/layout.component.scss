@@ -1,12 +1,24 @@
-.main-content{
-  padding: 16px;
-}
+
 
 .layout-container {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   justify-content: space-between;
+
+  .layout-inner {
+    .main-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      .main-content{
+        width: 100%;
+        max-width: 900px;
+      }
+    }
+  }
 }
 
 .loading-spinner {

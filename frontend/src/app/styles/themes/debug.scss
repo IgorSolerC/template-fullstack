@@ -1,43 +1,43 @@
-@layer app-theme{
+/* DEBUG THEME */ 
+@layer app-theme { 
 
-html.debug-mode {
-    --background-primary-raw: 255, 0, 0;  // RGB values
-    --background-primary: rgb(var(--background-primary-raw)); // Main background
+html.debug-mode { 
+    --background-primary-raw: 0, 0, 139;  /* Dark Blue */ 
+    --background-primary: rgb(var(--background-primary-raw)); 
 
-    --background-secondary: #002fff;     // Cards, headers, etc.
-    --foreground-primary: #ff0000;       // Main text color
-    --foreground-secondary: #ff0000;     // Muted text
-    --border-color: #008cff;
+    --background-secondary: #000052;     /* Navy Blue */ 
+    --foreground-primary: #ffff00;       /* Yellow */ 
+    --foreground-secondary: #ff00ff;     /* Magenta */ 
+    --border-color: #ff1493;             /* Deep Pink */ 
 
-    --warning-primary: #ffc107;
-    --warning-text: #f8f9fa;
-    --error-primary: #d41d39;
-    --error-text: #f8f9fa;
-    --success-primary: #28a745;
-    --success-text: #f8f9fa;
-    --info-primary:#007bff;
-    --info-text: #f8f9fa;
+    --warning-primary: #ffa500;           /* Orange */ 
+    --warning-text: #000000; 
+    --error-primary: #ff0000;             /* Red */ 
+    --error-text: #ffffff; 
+    --success-primary: #00ff00;           /* Lime Green */ 
+    --success-text: #000000; 
+    --info-primary:#00ffff;               /* Cyan */ 
+    --info-text: #000000; 
 
-    --accent-primary: #ff00d4;           // Main brand color for links, buttons
-    --accent-primary-hover: #ff00d4;     // Hover state for brand color
+    --accent-primary: #ffc0cb;           /* Pink */ 
+    --accent-primary-hover: #ff69b4;     /* Hot Pink */ 
 
-    --accent-btn: var(--accent-primary);           // Main brand color for links, buttons
-    --accent-btn-hover: var(--accent-primary-hover);     // Hover state for brand color
-    --accent-btn-text: #00ffff;       // Text color for brand buttons
-    --neutral-btn: var(--border-color); // Neutral color for buttons
-    --neutral-btn-hover: #292f35;     // Hover state for neutral color
-    --neutral-btn-text: #00ffff;      // Text color for neutral buttons
-    --critical-btn: var(--error-primary);// Critical color for buttons, like deletes
-    --critical-btn-hover: #c60e3c;     // Hover state for critical color
-    --critical-btn-text: #00ffff;      // Text color for critical buttons
+    --accent-btn: var(--accent-primary); 
+    --accent-btn-hover: var(--accent-primary-hover); 
+    --accent-btn-text: #000000; 
+    --neutral-btn: var(--border-color); 
+    --neutral-btn-hover: #db7093;     /* Pale Violet Red */ 
+    --neutral-btn-text: #000000; 
+    --critical-btn: var(--error-primary); 
+    --critical-btn-hover: #dc143c;     /* Crimson */ 
+    --critical-btn-text: #ffffff; 
 
-    --header-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    --heavy-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    --medium-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-    --light-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    --header-shadow: 0 2px 4px rgba(255, 0, 255, 0.4); 
+    --heavy-shadow: 0 2px 4px rgba(255, 0, 255, 0.4); 
+    --medium-shadow: 0 2px 4px rgba(255, 0, 255, 0.4); 
+    --light-shadow: 0 2px 4px rgba(255, 0, 255, 0.4); 
 
-    --disabled-button-bg: var(--border-color);
-    --disabled-button-text: var(--foreground-secondary);
-
-}
-}
+    --disabled-button-bg: var(--border-color); 
+    --disabled-button-text: var(--foreground-secondary); 
+} 
+} 
