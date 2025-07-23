@@ -12,11 +12,11 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 
 @Component({
-  selector: 'app-auth-test',
+  selector: 'app-auth',
   standalone: true,
   imports: [ CommonModule, ReactiveFormsModule, RouterModule, TabsModule, InputTextModule, ButtonModule, CardModule ],
-  templateUrl: './auth-test.component.html',
-  styleUrl: './auth-test.component.scss'
+  templateUrl: './auth.component.html',
+  styleUrl: './auth.component.scss'
 })
 export class AuthTestComponent implements OnInit {
   // Services

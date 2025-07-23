@@ -73,7 +73,7 @@ export class AuthService {
     localStorage.removeItem(this.tokenKey);
     this.currentUserSubject.next(null);
     this.isAuthenticatedSubject.next(false);
-    this.router.navigate(['/auth-test']); // Navigate to a safe page after logout
+    this.router.navigate(['/auth']); // Navigate to a safe page after logout
   }
 
   // --- Helper Methods ---
