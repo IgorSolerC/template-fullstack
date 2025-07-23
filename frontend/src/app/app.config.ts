@@ -10,6 +10,7 @@ import { spinnerInterceptor } from './core/interceptors/spinner.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
+import { authInterceptor } from './core/interceptors/auth.interceptor';
 
 
 export const appConfig: ApplicationConfig = {
@@ -18,7 +19,8 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(withInterceptors([
-      spinnerInterceptor
+      spinnerInterceptor,
+      authInterceptor
     ])),
     provideAnimations(),
     provideToastr({
