@@ -12,7 +12,7 @@ export const routes: Routes = [
             { path: '', redirectTo: '/home', pathMatch: 'full'},
             { path: 'home', component: HomeComponent, title: 'Início'},
             { path: 'example', component: ExampleComponent, title: 'Exemplo' },
-            { path: 'auth', component: AuthTestComponent, title: 'Auth Teste' },
+            { path: 'auth', component: AuthTestComponent, title: 'Auth' },
             { path: '**', component: PageNotFoundComponent, title: 'Página Não Encontrada' }
         ]
     },
