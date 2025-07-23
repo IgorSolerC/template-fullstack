@@ -1,0 +1,51 @@
+:host {
+    display: block;
+    .container {
+        max-width: 800px;
+        margin: 2rem auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding-top: 1rem;
+    }
+
+    .divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        margin: 1.5rem 0;
+        color: var(--surface-400);
+
+        &::before, &::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--surface-200);
+        }
+        &:not(:empty)::before {
+            margin-right: .5em;
+        }
+        &:not(:empty)::after {
+            margin-left: .5em;
+        }
+    }
+    
+    .user-details, .data-display {
+        background-color: var(--surface-100);
+        border: 1px solid var(--surface-200);
+        border-radius: 6px;
+        padding: 1rem;
+        margin-top: 1rem;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .actions {
+        margin-top: 1rem;
+    }
+}

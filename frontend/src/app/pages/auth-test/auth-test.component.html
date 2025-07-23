@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>Página de Teste de Autenticação</h1>
+  
+    <!-- LOGGED OUT VIEW -->
+    <ng-container *ngIf="!(authService.isAuthenticated$ | async)">
+      <p-card header="Acesso">
+        <p-tabs>
+          <p-tabpanels header="Login">
+            <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="form-container">
+              <input pInputText placeholder="Email" formControlName="email" class="input"/>
+              <input pInputText type="password" placeholder="Senha" formControlName="password" class="input"/>
+              <button pButton type="submit" label="Entrar" [disabled]="loginForm.invalid"></button>
+            </form>
+          </p-tabpanels>
+          <p-tabpanels header="Registrar">
+            <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="form-container">
+              <input pInputText placeholder="Nome Completo" formControlName="full_name" class="input"/>
+              <input pInputText placeholder="Email" formControlName="email" class="input"/>
+              <input pInputText type="password" placeholder="Senha" formControlName="password" class="input"/>
+              <button pButton type="submit" label="Registrar" [disabled]="registerForm.invalid"></button>
+            </form>
+          </p-tabpanels>
+        </p-tabs>
+        <div class="divider">
+          <span>OU</span>
+        </div>
+        <button pButton (click)="redirectToGoogle()" label="Entrar com Google" icon="fa-brands fa-google" class="p-button-secondary"></button>
+      </p-card>
+    </ng-container>
+  
+    <!-- LOGGED IN VIEW -->
+    <ng-container *ngIf="authService.isAuthenticated$ | async">
+      <ng-container *ngIf="authService.currentUser$ | async as user">
+        <p-card header="Bem-vindo, {{ user.full_name || user.email }}!">
+          <p>Você está autenticado! Agora você pode acessar recursos protegidos.</p>
+          <pre class="user-details">{{ user | json }}</pre>
+          <div class="actions">
+              <button pButton (click)="onLogout()" label="Sair" class="p-button-danger"></button>
+          </div>
+        </p-card>
+        
+        <p-card header="Teste de Endpoint Protegido">
+          <p>Clique no botão para tentar buscar uma lista de exemplos. A rota deve estar protegida no backend para o teste funcionar.</p>
+          <button pButton (click)="fetchProtectedData()" label="Buscar Dados Protegidos"></button>
+          <div *ngIf="protectedData" class="data-display">
+              <h4>Resultado:</h4>
+              <pre>{{ protectedData | json }}</pre>
+          </div>
+        </p-card>
+      </ng-container>
+    </ng-container>
+  
+  </div>
