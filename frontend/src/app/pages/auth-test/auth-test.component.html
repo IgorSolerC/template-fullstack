@@ -1,52 +1,58 @@
 <div class="container">
-    <h1>Página de Teste de Autenticação</h1>
-  
     <!-- LOGGED OUT VIEW -->
     <ng-container *ngIf="!(authService.isAuthenticated$ | async)">
-      <p-card header="Acesso">
-        <p-tabs>
-          <p-tabpanels header="Login">
+      <section class="card">
+      <h2>Acesso</h2>
+      <p-tabs value="0">
+        <p-tablist>
+          <p-tab value="0">Login</p-tab>
+          <p-tab value="1">Registrar</p-tab>
+        </p-tablist>
+        <p-tabpanels>
+          <p-tabpanel value="0">
             <form [formGroup]="loginForm" (ngSubmit)="onLogin()" class="form-container">
               <input pInputText placeholder="Email" formControlName="email" class="input"/>
               <input pInputText type="password" placeholder="Senha" formControlName="password" class="input"/>
-              <button pButton type="submit" label="Entrar" [disabled]="loginForm.invalid"></button>
+              <button class="btn" type="submit" [disabled]="loginForm.invalid">Entrar</button>
             </form>
-          </p-tabpanels>
-          <p-tabpanels header="Registrar">
+          </p-tabpanel>
+          <p-tabpanel value="1">
             <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="form-container">
               <input pInputText placeholder="Nome Completo" formControlName="full_name" class="input"/>
               <input pInputText placeholder="Email" formControlName="email" class="input"/>
               <input pInputText type="password" placeholder="Senha" formControlName="password" class="input"/>
-              <button pButton type="submit" label="Registrar" [disabled]="registerForm.invalid"></button>
+              <button class="btn" type="submit" [disabled]="registerForm.invalid">Registrar</button>
             </form>
-          </p-tabpanels>
-        </p-tabs>
-        <div class="divider">
-          <span>OU</span>
-        </div>
-        <button pButton (click)="redirectToGoogle()" label="Entrar com Google" icon="fa-brands fa-google" class="p-button-secondary"></button>
-      </p-card>
-    </ng-container>
+          </p-tabpanel>
+        </p-tabpanels>
+      </p-tabs>
+      <div class="divider">
+        <span>OU</span>
+      </div>
+      <button (click)="redirectToGoogle()" icon="fa-brands fa-google" class="btn neutral">Entrar com Google</button>
+    </section>
+  </ng-container>
   
     <!-- LOGGED IN VIEW -->
     <ng-container *ngIf="authService.isAuthenticated$ | async">
       <ng-container *ngIf="authService.currentUser$ | async as user">
-        <p-card header="Bem-vindo, {{ user.full_name || user.email }}!">
+        <section class="card"> 
+          <h2>Bem-vindo, {{ user.full_name || user.email }}!</h2>
           <p>Você está autenticado! Agora você pode acessar recursos protegidos.</p>
           <pre class="user-details">{{ user | json }}</pre>
           <div class="actions">
-              <button pButton (click)="onLogout()" label="Sair" class="p-button-danger"></button>
+            <button class="btn critical" (click)="onLogout()">Sair</button>
           </div>
-        </p-card>
+        </section>
         
-        <p-card header="Teste de Endpoint Protegido">
+        <div class="card">
           <p>Clique no botão para tentar buscar uma lista de exemplos. A rota deve estar protegida no backend para o teste funcionar.</p>
-          <button pButton (click)="fetchProtectedData()" label="Buscar Dados Protegidos"></button>
+          <button class="btn" (click)="fetchProtectedData()">Buscar Dados Protegidos</button>
           <div *ngIf="protectedData" class="data-display">
-              <h4>Resultado:</h4>
-              <pre>{{ protectedData | json }}</pre>
+            <h4>Resultado:</h4>
+            <pre>{{ protectedData | json }}</pre>
           </div>
-        </p-card>
+        </div>
       </ng-container>
     </ng-container>
   
