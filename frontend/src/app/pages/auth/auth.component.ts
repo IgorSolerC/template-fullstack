@@ -4,12 +4,12 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../core/services/auth.service';
-import { ExampleService } from '../../core/services/example.service';
 import { environment } from '../../../environments/environment';
 import { TabsModule } from 'primeng/tabs';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
+import { User } from '../../domain/models/user';
 
 @Component({
   selector: 'app-auth',
@@ -25,7 +25,6 @@ export class AuthTestComponent implements OnInit {
   private toastr = inject(ToastrService);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
-  private exampleService = inject(ExampleService); // To test protected endpoint
 
   // Forms
   loginForm!: FormGroup;
@@ -33,6 +32,8 @@ export class AuthTestComponent implements OnInit {
 
   // State
   protectedData: any = null;
+
+  allUsers: User[] | null = null;
   
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -108,15 +109,14 @@ export class AuthTestComponent implements OnInit {
   }
 
   fetchProtectedData(): void {
-    // We re-use the example service, assuming its 'getExamples' is protected
-    this.exampleService.getExamples().subscribe({
-      next: (data) => {
-        this.protectedData = data;
-        this.toastr.success('Dados protegidos carregados com sucesso!', 'Sucesso');
+    this.authService.getAllUsers().subscribe({
+      next: (users) => {
+        this.allUsers = users;
+        this.toastr.success('Lista de usuários carregada com sucesso!', 'Sucesso');
       },
       error: (err) => {
-        this.protectedData = { error: err.error?.detail || 'Acesso não autorizado' };
-        this.toastr.error(err.error?.detail || 'Você não tem permissão para ver isso.', 'Erro 401');
+        this.allUsers = null;
+        this.toastr.error(err.error?.detail || 'Você não tem permissão para ver isso.', 'Erro de Autorização');
       }
     });
   }

@@ -34,7 +34,6 @@
   </ng-container>
   
     <!-- LOGGED IN VIEW -->
-    <ng-container *ngIf="authService.isAuthenticated$ | async">
       <ng-container *ngIf="authService.currentUser$ | async as user">
         <section class="card"> 
           <h2>Bem-vindo, {{ user.full_name || user.email }}!</h2>
@@ -44,16 +43,19 @@
             <button class="btn critical" (click)="onLogout()">Sair</button>
           </div>
         </section>
-        
-        <div class="card">
-          <p>Clique no botão para tentar buscar uma lista de exemplos. A rota deve estar protegida no backend para o teste funcionar.</p>
-          <button class="btn" (click)="fetchProtectedData()">Buscar Dados Protegidos</button>
-          <div *ngIf="protectedData" class="data-display">
-            <h4>Resultado:</h4>
-            <pre>{{ protectedData | json }}</pre>
-          </div>
-        </div>
       </ng-container>
-    </ng-container>
+        
+      <div class="card">
+        <p>Clique no botão para tentar buscar os usuários cadastrados de uma rota protegida.</p>
+        <button class="btn" (click)="fetchProtectedData()">Buscar Dados Protegidos</button>
+        <div *ngIf="allUsers" class="data-display">
+          <h4>Resultado:</h4>
+          <ul class="user-list">
+              <li *ngFor="let u of allUsers">
+                  <span>{{ u.id }}: {{ u.full_name }} ({{ u.email }})</span>
+              </li>
+          </ul>
+        </div>
+      </div>
   
   </div>
