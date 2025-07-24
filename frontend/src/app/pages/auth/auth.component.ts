@@ -7,18 +7,16 @@ import { AuthService } from '../../core/services/auth.service';
 import { environment } from '../../../environments/environment';
 import { TabsModule } from 'primeng/tabs';
 import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
 import { User } from '../../domain/models/user';
 
 @Component({
   selector: 'app-auth',
   standalone: true,
-  imports: [ CommonModule, ReactiveFormsModule, RouterModule, TabsModule, InputTextModule, ButtonModule, CardModule ],
+  imports: [ CommonModule, ReactiveFormsModule, RouterModule, TabsModule, InputTextModule],
   templateUrl: './auth.component.html',
   styleUrl: './auth.component.scss'
 })
-export class AuthTestComponent implements OnInit {
+export class AuthComponent implements OnInit {
   // Services
   authService = inject(AuthService);
   private fb = inject(FormBuilder);
