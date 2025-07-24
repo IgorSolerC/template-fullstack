@@ -48,4 +48,18 @@
     .actions {
         margin-top: 1rem;
     }
+
+.btn-google {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    font-weight: 600;
+  }
+
+  .btn-google svg {
+    width: 18px;
+    height: 18px;
+  }
 }
