@@ -59,3 +59,10 @@ async def get_or_create_user_from_google(db: Session, authorization_code: str):
         db.refresh(user)
         
     return user
+
+
+def get_all_users(db: Session):
+    """
+    Retrieves all users from the database.
+    """
+    return db.query(models.User).all()

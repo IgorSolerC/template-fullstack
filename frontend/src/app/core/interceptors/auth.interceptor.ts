@@ -4,7 +4,6 @@ import { AuthService } from '../services/auth.service';
 import { environment } from '../../../environments/environment';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
-  // Inject services directly inside the function
   const authService = inject(AuthService);
   const token = authService.getToken();
   

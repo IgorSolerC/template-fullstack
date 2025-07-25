@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { User } from '../../domain/models/user'; // We'll create this model
-import { Token } from '../../domain/models/token'; // And this one
+import { User } from '../../domain/models/user'; 
+import { Token } from '../../domain/models/token';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
@@ -63,6 +63,11 @@ export class AuthService {
     );
   }
 
+  getAllUsers(): Observable<User[]> {
+    // The AuthInterceptor will automatically add the Bearer token to this request
+    return this.http.get<User[]>(`${this.apiBaseUrl}/auth/users/`);
+  }
+
   loginWithGoogle(code: string): Observable<Token> {
     return this.http.post<Token>(`${this.apiBaseUrl}/auth/google/login`, { code }).pipe(
       tap(response => this.handleAuthSuccess(response.access_token))
@@ -89,5 +94,5 @@ export class AuthService {
 
   public getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
-  }
+  } 
 }
